@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Cliente ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Applicación Clientes", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home",    "Index",    "Home")</li>
+                    <li>@Html.ActionLink("About",   "About",    "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact",  "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Info PreAlta Cliente</p>
+            <div class="footer">
+                <div class="row" style="margin-right:0;margin-left:0">
+                    <div class="col-sm-4" style="text-align:left;margin-top:7px">
+                        @Html.ActionLink("Términos y Condiciones", "Index", "Terminos")
+                        @*<a class="pull-left">Términos y Condiciones</a>*@
+                    </div>
+                    <div class="col-sm-4" style="text-align:center">
+                        <label>© 2019 Mario Leal Fuentes - Argentina. Todos los derechos reservados.</label>
+                    </div>
+                    <div class="col-sm-4" style="text-align:right;margin-top:7px">
+                        @Html.ActionLink("Política de Privacidad", "Index", "Politica")
+                        @*<a class="pull-right">Políticas de Privacidad</a>*@
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

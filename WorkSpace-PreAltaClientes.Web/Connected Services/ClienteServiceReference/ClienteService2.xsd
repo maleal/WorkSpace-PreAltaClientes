@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WorkSpace_PreAltaClientes.DataModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WorkSpace_PreAltaClientes.DataModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:60386/ClienteService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:complexType name="ClienteDTOReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CatalogoReqBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="clientes" nillable="true" type="tns:ListaClientes" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClienteDTOReq" nillable="true" type="tns:ClienteDTOReq" />
+  <xs:complexType name="CatalogoReqBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Control" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Operacion" type="xs:int" />
+      <xs:element minOccurs="0" name="Paginacion" nillable="true" type="tns:Paginacion" />
+      <xs:element minOccurs="0" name="Seguridad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoOperacion" type="tns:Accion" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CatalogoReqBase" nillable="true" type="tns:CatalogoReqBase" />
+  <xs:complexType name="Paginacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CantidadRegistros" type="xs:int" />
+      <xs:element minOccurs="0" name="Pagina" type="xs:int" />
+      <xs:element minOccurs="0" name="RegistrosPorPagina" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Paginacion" nillable="true" type="tns:Paginacion" />
+  <xs:simpleType name="Accion">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Crear" />
+      <xs:enumeration value="Actualizar" />
+      <xs:enumeration value="Cancelar" />
+      <xs:enumeration value="Eliminar" />
+      <xs:enumeration value="Activar" />
+      <xs:enumeration value="Desactivar" />
+      <xs:enumeration value="Consultar" />
+      <xs:enumeration value="Autorizar" />
+      <xs:enumeration value="CrearMasivo" />
+      <xs:enumeration value="Anular" />
+      <xs:enumeration value="Generar" />
+      <xs:enumeration value="Confirmar" />
+      <xs:enumeration value="Transferir" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Accion" nillable="true" type="tns:Accion" />
+  <xs:complexType name="ListaClientes">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClienteDTO" nillable="true" type="tns:ClienteDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListaClientes" nillable="true" type="tns:ListaClientes" />
+  <xs:complexType name="ClienteDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CatalogoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Cuit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DateCreated" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MyProducts" nillable="true" type="tns:ArrayOfProductDTO" />
+          <xs:element minOccurs="0" name="NombreClte" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Razon_social" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClienteDTO" nillable="true" type="tns:ClienteDTO" />
+  <xs:complexType name="CatalogoBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Id_Usuario" type="xs:int" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CatalogoBase" nillable="true" type="tns:CatalogoBase" />
+  <xs:complexType name="ArrayOfProductDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductDTO" nillable="true" type="tns:ProductDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductDTO" nillable="true" type="tns:ArrayOfProductDTO" />
+  <xs:complexType name="ProductDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CatalogoBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ClienteId" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="ProductCategoryId" type="xs:int" />
+          <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProductDTO" nillable="true" type="tns:ProductDTO" />
+  <xs:complexType name="ClienteDTOResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CatalogoRespBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="clientes" nillable="true" type="tns:ListaClientes" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClienteDTOResp" nillable="true" type="tns:ClienteDTOResp" />
+  <xs:complexType name="CatalogoRespBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Errores" nillable="true" type="tns:ListaErrores" />
+      <xs:element minOccurs="0" name="EsExitosa" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TotalRegistros" type="xs:int" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CatalogoRespBase" nillable="true" type="tns:CatalogoRespBase" />
+  <xs:complexType name="ListaErrores">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Error" nillable="true" type="tns:Error" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListaErrores" nillable="true" type="tns:ListaErrores" />
+  <xs:complexType name="Error">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codigo" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="ExcepcionInterna" nillable="true" type="q1:Exception" />
+      <xs:element minOccurs="0" name="Fila" type="xs:int" />
+      <xs:element minOccurs="0" name="Mensaje" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Error" nillable="true" type="tns:Error" />
+</xs:schema>

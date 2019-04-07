@@ -1,0 +1,55 @@
+﻿@*@model IEnumerable<WorkSpace_PreAltaClientes.Web.Models.Clientes>*@
+@model List< WorkSpace_PreAltaClientes.Web.Models.Clientes>
+
+@{
+    ViewBag.Title = "Selección del Cliente";
+}
+
+<h2>Seleccione el Cliente</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+@using (Html.BeginForm("Index", "Clientes", FormMethod.Post, new { id = "formPrincipal", enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="form-group col-sm-4">
+            @Html.DropDownList("clientes_select_list", new SelectList(Model.Select(x=> new { Value=x.cuit, Text=x.razon_social}), "Value", "Text"), new { @class = "form-control" })
+            @*@Html.DropDownList("clientes-select-list", new SelectList(Model, "id", "razon_social"), new { @class = "form-control" })*@
+        </div>
+        <div class="form-group col-sm-4">
+            <button id="submit" type="submit" class="btn btn-primary btn-block" >Ingresar</button>
+        </div>
+    </div>
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model[0].cuit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model[0].razon_social)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cuit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.razon_social)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
