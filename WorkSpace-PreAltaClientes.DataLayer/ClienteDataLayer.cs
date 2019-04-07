@@ -21,15 +21,7 @@ namespace WorkSpace_PreAltaClientes.DataLayer
             dto.MyProducts = new List<ProductDTO>();
             foreach (var reg in tablaCliente)
             {
-                //ClienteDTO dto = new ClienteDTO()
-                //{
-                //    ID = reg.Id,
-                //    NombreClte = reg.Nombre,
-                //    Razon_social = reg.RazonSocial,
-                //    DateCreated = reg.DateCreated,
-                //    Cuit = reg.Cuit,
-                //    Email = reg.EmailClient
-                //};
+                
                 dto.ID = reg.Id;
                 dto.NombreClte = reg.Nombre;
                 dto.Razon_social = reg.RazonSocial;
@@ -37,8 +29,6 @@ namespace WorkSpace_PreAltaClientes.DataLayer
                 dto.Cuit = reg.Cuit;
                 dto.Email = reg.EmailClient;
 
-                //List<ProductDTO> lpDto = new List<ProductDTO>();
-                
                 foreach(var p in reg.Products) {
                     ProductDTO pDto = new ProductDTO()
                     {
