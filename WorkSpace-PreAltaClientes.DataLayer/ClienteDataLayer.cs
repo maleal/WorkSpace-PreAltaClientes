@@ -42,8 +42,6 @@ namespace WorkSpace_PreAltaClientes.DataLayer
 
             //foreach(Cliente prod in tablaCliente)
 
-
-
             return cliente;
         }
 
